@@ -1,6 +1,6 @@
-import express, { Express, Request, Response } from 'express';
+import express, { Express } from 'express';
 import dotenv from 'dotenv';
-import { userRouter } from './routes';
+import { productRouter, userRouter } from './routes';
 import bodyParser from 'body-parser';
 
 dotenv.config();
@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/api/user',userRouter)
+app.use('/api/product',productRouter)
 
 app.listen(process.env.PORT,()=>{
     console.log("app is running on 8080");
