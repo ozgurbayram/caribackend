@@ -8,17 +8,30 @@ datasource db {
 }
 
 model Product {
-    barcode String @id
+    id      String @id @default(uuid())
+    barcode String 
     price   Int
     name    String
     user    User @relation(fields: [userId],references: [id])
-    userId  Int
+    userId  String
 }
 
 
+model Payment {
+    id          String @id @default(uuid())
+    amount      Int
+    products    Json    
+    companyName String
+    recipient   String
+    created_at  DateTime @default(now())
+    user        User @relation(fields: [userId],references: [id])
+    userId      String
+}
+
 model User {
-    id        Int      @id @default(autoincrement())
+    id        String   @id @default(uuid())
     email     String   @unique
     password  String  
+    payments Payment[]
     products  Product[]
 }

@@ -1,6 +1,6 @@
 import express, { Express } from 'express';
 import dotenv from 'dotenv';
-import { productRouter, userRouter } from './routes';
+import { paymentRoute, productRouter, userRouter } from './routes';
 import bodyParser from 'body-parser';
 
 dotenv.config();
@@ -12,7 +12,8 @@ app.use(bodyParser.json());
 
 app.use('/api/user',userRouter)
 app.use('/api/product',productRouter)
+app.use('/api/payment',paymentRoute)
 
 app.listen(process.env.PORT,()=>{
-    console.log("app is running on 8080");
+    console.log('app is running on 8080');
 })

@@ -2,7 +2,6 @@ import { Router,Request,Response } from 'express'
 import { prisma } from '../utils/PrismaClient'
 import {genSalt,hash,compare} from 'bcrypt'
 import generateJWT from '../utils/generateJwt'
-import authMiddleware from '../middleware/authMiddleware'
 
 const userRouter = Router()
 
