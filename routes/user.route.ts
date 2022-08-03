@@ -7,7 +7,6 @@ const userRouter = Router()
 
 userRouter.post('/login',async(req,res)=>{
     const {email,password} = req.body     
-    console.log(email,password)
     if(email && password) {
         const user = await prisma.user.findUnique({where:{email:email}})
         if(user) {
@@ -56,7 +55,7 @@ userRouter.post('/register',async (req:Request,res:Response)=>{
         }
     }
     return res.status(400).json({
-        'message':'Form eksik.'
+        'message':'Eksik form'
     })
 })
 

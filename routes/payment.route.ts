@@ -1,9 +1,10 @@
 import { Request, Response, Router } from 'express';
 import { prisma } from '../utils/PrismaClient';
+import authMiddleware from '../middleware/authMiddleware';
 
 const paymentRoute = Router()
 
-paymentRoute.post('/create',async(req:Request,res:Response)=>{
+paymentRoute.post('/create',authMiddleware,async(req:Request,res:Response)=>{
     const {id} = req.body.user
     const {amount,products,companyName,recipient} = req.body
     if(amount&&products&&companyName&&recipient) {
@@ -33,7 +34,7 @@ paymentRoute.post('/create',async(req:Request,res:Response)=>{
     }
 })
 
-paymentRoute.get('/list',async(req:Request,res:Response)=>{
+paymentRoute.get('/list',authMiddleware,async(req:Request,res:Response)=>{
     const {id} = req.body.user 
     const payments = await prisma.payment.findMany({
         where:{

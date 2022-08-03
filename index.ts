@@ -15,5 +15,5 @@ app.use('/api/product',productRouter)
 app.use('/api/payment',paymentRoute)
 
 app.listen(process.env.PORT,()=>{
-    console.log('app is running on 8080');
+    console.log(`App is running on http://localhost:${process.env.PORT}`);
 })

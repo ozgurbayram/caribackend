@@ -29,7 +29,7 @@ productRouter.post('/create',authMiddleware,async(req:Request,res:Response)=>{
         })
         if(isExist) {
             return res.status(400).json({
-                'message':'Product with barcode is exist'
+                'message':'Bu Barkod ile bir ürün kayıtlı'
             })
         }
         const product = await prisma.product.create({
